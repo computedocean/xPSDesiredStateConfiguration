@@ -37,14 +37,12 @@ BuildWorkflow:
     - Create_changelog_release_output
 
   docs:
-    - Generate_Wiki_Content
     - Generate_Conceptual_Help
-    - Generate_Markdown_For_Public_Commands
-    - Generate_External_Help_File_For_Public_Commands
-    - Clean_Markdown_Of_Public_Commands
+    - Generate_Wiki_Content
     - Generate_Wiki_Sidebar
     - Clean_Markdown_Metadata
     - Add_newline_to_helpxml
+    - Package_Wiki_Content
 
   pack:
     - build
@@ -126,6 +124,8 @@ TaskHeader: |
 GitHubConfig:
   GitHubFilesToAdd:
     - 'CHANGELOG.md'
+  ReleaseAssets:
+    - 'output/WikiContent.zip'
   GitHubConfigUserName: dscbot
   GitHubConfigUserEmail: dsccommunity@outlook.com
   UpdateChangelogOnPrerelease: false
@@ -144,7 +144,7 @@ DscResource.DocGenerator:
       - '\*(.+?)\*' # Match Italic (asterisk)
   Publish_GitHub_Wiki_Content:
     Debug: true
-  Generate_Wiki_Content:
+  Generate_Markdown_For_DSC_Resources:
     MofResourceMetadata:
       Type: MofResource
       Category: Resources
